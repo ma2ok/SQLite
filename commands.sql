@@ -1,18 +1,25 @@
-drop table if exists posts;
-create table posts (
+/*
+- unique
+- not null
+- default
+- check
+*/
+
+drop table if exists users;
+CREATE table users (
   id integer primary key,
-  title text,
-  body text
+  name text not null,
+  score integer default 10 check (score >= 0),
+  email text unique
 );
 
--- insert records
-insert into posts (title, body) values ('title1', 'body1');
-insert into posts (id, title, body) values (null, 'title2', 'body2');
-insert into posts (title, body) values ('title3', 'body3');
-insert into posts (title, body) values ('title4', 'it''s body4');
-insert into posts (title, body) values ('title5', 'it''s
-bod
-y5');
+-- insert into users (email) values ('taguchi@gmail.com');
+-- insert into users (email) values ('taguchi@gmail.com');
 
--- show all records
-select * from posts;
+-- insert into users (email) values ('taguchi@gmail.com');
+
+-- insert into users (name) values ('taguchi');
+
+insert into users (name, score) values ('taguchi', -30);
+
+select * from users;
