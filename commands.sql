@@ -5,23 +5,23 @@
 
 -- table
 
-/*
-integer int tinyint
-real double
-text varchar(255)
-blob
-null
-*/
+-- delete table
+drop table if exists posts;
 
-CREATE table if not exists posts (
+CREATE table posts (
   id integer primary key,
   title text,
   body text
 );
 
+-- rename table
+alter table posts rename to articles;
+
 -- list tables
 .tables
 
+-- add column
+alter table articles add column email text;
+
 -- table structure
--- .schema posts
 .schema
