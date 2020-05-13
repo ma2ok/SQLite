@@ -1,25 +1,30 @@
-/*
-- unique
-- not null
-- default
-- check
-*/
-
 drop table if exists users;
 CREATE table users (
   id integer primary key,
-  name text not null,
-  score integer default 10 check (score >= 0),
-  email text unique
+  name text,
+  score integer
 );
+insert into users (name, score) values ('taguchi', 43);
+insert into users (name, score) values ('fkoji',   80);
+insert into users (name, score) values ('tashiro', 65);
+insert into users (name, score) values ('hayashi', 54);
+insert into users (name, score) values ('sato',    74);
+insert into users (name, score) values ('ohashi',  null);
 
--- insert into users (email) values ('taguchi@gmail.com');
--- insert into users (email) values ('taguchi@gmail.com');
+-- select * from users;
 
--- insert into users (email) values ('taguchi@gmail.com');
+-- .headers on
+-- -- select id, name from users;
+-- select id, name as user_name from users;
 
--- insert into users (name) values ('taguchi');
+-- .mode line
+-- select * from users;
 
-insert into users (name, score) values ('taguchi', -30);
+.mode csv
+select * from users;
 
+.mode html
+select * from users;
+
+.mode column
 select * from users;
