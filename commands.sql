@@ -11,11 +11,11 @@ insert into users (name, score) values ('hayashi', 54);
 insert into users (name, score) values ('sato',    74);
 insert into users (name, score) values ('ohashi',  null);
 
--- order by
--- select * from users where score is not null order by score;
--- select * from users where score is not null order by score desc;
+-- view
+-- create view hiscore as select * from users order by score desc limit 5;
+--
+-- .tables
+-- .schema
 
--- limit
--- select * from users where score is not null order by score desc limit 3;
--- select * from users where score is not null order by score desc limit 3 offset 2;
-select * from users where score is not null order by score desc limit 2, 3;
+-- select * from hiscore;
+drop view if exists hiscore;
