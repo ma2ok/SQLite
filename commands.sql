@@ -1,27 +1,18 @@
--- memo
-/* memo */
-
-.help
-
--- table
-
--- delete table
 drop table if exists posts;
-
-CREATE table posts (
+create table posts (
   id integer primary key,
   title text,
   body text
 );
 
--- rename table
-alter table posts rename to articles;
+-- insert records
+insert into posts (title, body) values ('title1', 'body1');
+insert into posts (id, title, body) values (null, 'title2', 'body2');
+insert into posts (title, body) values ('title3', 'body3');
+insert into posts (title, body) values ('title4', 'it''s body4');
+insert into posts (title, body) values ('title5', 'it''s
+bod
+y5');
 
--- list tables
-.tables
-
--- add column
-alter table articles add column email text;
-
--- table structure
-.schema
+-- show all records
+select * from posts;
