@@ -5,10 +5,18 @@
 
 -- table
 
+/*
+integer int tinyint
+real double
+text varchar(255)
+blob
+null
+*/
+
 CREATE table if not exists posts (
-  id,
-  title,
-  body
+  id integer primary key,
+  title text,
+  body text
 );
 
 -- list tables
