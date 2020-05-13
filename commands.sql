@@ -11,20 +11,17 @@ insert into users (name, score) values ('hayashi', 54);
 insert into users (name, score) values ('sato',    74);
 insert into users (name, score) values ('ohashi',  null);
 
--- select * from users;
+-- select * from users where score > 60;
 
--- .headers on
--- -- select id, name from users;
--- select id, name as user_name from users;
+-- > < >= <= =(==) <>(!=)
+-- and or not
 
--- .mode line
--- select * from users;
+-- select * from users where score >= 50 and score <= 80;
 
-.mode csv
-select * from users;
+-- between in
 
-.mode html
-select * from users;
+-- select * from users where score between 50 and 80;
+-- select * from users where name in ('taguchi', 'fkoji');
 
-.mode column
-select * from users;
+-- select * from users where score = null;
+select * from users where score is not null;
