@@ -9,16 +9,13 @@ insert into users (name, score) values ('fkoji',   80);
 insert into users (name, score) values ('tashiro', 65);
 insert into users (name, score) values ('hayashi', 54);
 insert into users (name, score) values ('sato',    74);
-insert into users (name, score) values ('ohashi*',  null);
+insert into users (name, score) values ('ohashi',  null);
 
--- glob
--- 大文字小文字を区別する
--- ?
--- *
--- [abc]
--- [a-z]
--- select * from users where name glob '*i*';
--- select * from users where name glob '*I*';
--- select * from users where name glob '[ts]*';
--- select * from users where name glob '[a-m]*';
-select * from users where name glob '*[*]';
+-- order by
+-- select * from users where score is not null order by score;
+-- select * from users where score is not null order by score desc;
+
+-- limit
+-- select * from users where score is not null order by score desc limit 3;
+-- select * from users where score is not null order by score desc limit 3 offset 2;
+select * from users where score is not null order by score desc limit 2, 3;
