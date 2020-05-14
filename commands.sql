@@ -14,21 +14,13 @@ insert into users (name, score, team) values ('sato',    74, 'team-C');
 .headers on
 .mode column
 
--- trigger
+-- index
+-- create index score_index on users(score);
+-- create unique index name_index on users(name);
+--
+-- .indices users
+-- .schema users
 
-create table messages (message);
-
-create trigger new_winner update of score on users when new.score > 100
-begin
-  insert into messages (message) values (
-    'name: ' || new.name ||
-    ' ' || old.score ||
-    ' -> ' || new.score
-  );
-end;
-
-update users set score = score + 30;
-select * from messages;
-
--- .schema
--- drop trigger new_winner;
+drop index if exists score_index;
+drop index if exists name_index;
+.indices users
