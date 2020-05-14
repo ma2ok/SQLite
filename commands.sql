@@ -1,40 +1,24 @@
-drop table if exists posts;
-CREATE table posts (
+drop table if exists users;
+create table users (
   id integer primary key,
-  title text,
-  body text
+  name,
+  score
 );
-insert into posts (id, title, body) values (1, 't1', 'b1');
-insert into posts (id, title, body) values (2, 't2', 'b2');
+insert into users (name, score) values ('a', 10);
+insert into users (name, score) values ('b', 20);
+insert into users (name, score) values ('c', 30);
 
-drop table if exists comments;
-CREATE table comments (
-  id integer primary key,
-  post_id integer,
-  comment text
-);
-insert into comments (id, post_id, comment) values (1, 1, 'c1');
-insert into comments (id, post_id, comment) values (2, 1, 'c2');
+create table temp (name, score);
 
-.headers on
-.mode column
+.mode csv
+-- .import users.csv users
+.import users.csv temp
 
--- posts, comments
--- select * from posts;
--- select * from comments;
+insert into users (name, score) select name, score from temp;
+select * from users;
 
--- 内部結合
--- select * from posts inner join comments on posts.id = comments.post_id;
--- select * from posts join comments on posts.id = comments.post_id;
--- select posts.id, posts.title, comments.comment from posts join comments on posts.id = comments.post_id;
--- select posts.id, title, comment from posts join comments on posts.id = comments.post_id;
+drop table temp;
 
--- 外部結合
--- left outer join *
--- right outer join
--- full outer join
--- select posts.id, title, comment from posts left outer join comments on posts.id = comments.post_id;
--- select posts.id, title, comment from posts left join comments on posts.id = comments.post_id;
-
--- 交差結合
-select posts.id, title, comment from posts cross join comments;
+.mode csv
+.output users_out.csv
+select * from users;
