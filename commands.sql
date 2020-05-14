@@ -3,7 +3,8 @@ CREATE table users (
   id integer primary key,
   name text,
   score integer,
-  team text
+  team text,
+  created datetime default (datetime('now', '+09:00:00'))
 );
 insert into users (name, score, team) values ('taguchi', 43, 'team-A');
 insert into users (name, score, team) values ('fkoji',   80, 'team-B');
@@ -14,13 +15,11 @@ insert into users (name, score, team) values ('sato',    74, 'team-C');
 .headers on
 .mode column
 
--- index
--- create index score_index on users(score);
--- create unique index name_index on users(name);
---
--- .indices users
--- .schema users
+-- date time
+-- date()
+-- time()
+-- strftime()
+-- select datetime('now', '+09:00:00');
+-- select date('2015-07-17', '+3 months', 'start of month', '-1 day');
 
-drop index if exists score_index;
-drop index if exists name_index;
-.indices users
+select * from users;
