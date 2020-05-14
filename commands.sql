@@ -20,5 +20,11 @@ insert into comments (id, post_id, comment) values (2, 1, 'c2');
 .mode column
 
 -- posts, comments
-select * from posts;
-select * from comments;
+-- select * from posts;
+-- select * from comments;
+
+-- 内部結合
+-- select * from posts inner join comments on posts.id = comments.post_id;
+-- select * from posts join comments on posts.id = comments.post_id;
+-- select posts.id, posts.title, comments.comment from posts join comments on posts.id = comments.post_id;
+select posts.id, title, comment from posts join comments on posts.id = comments.post_id;
