@@ -27,4 +27,14 @@ insert into comments (id, post_id, comment) values (2, 1, 'c2');
 -- select * from posts inner join comments on posts.id = comments.post_id;
 -- select * from posts join comments on posts.id = comments.post_id;
 -- select posts.id, posts.title, comments.comment from posts join comments on posts.id = comments.post_id;
-select posts.id, title, comment from posts join comments on posts.id = comments.post_id;
+-- select posts.id, title, comment from posts join comments on posts.id = comments.post_id;
+
+-- 外部結合
+-- left outer join *
+-- right outer join
+-- full outer join
+-- select posts.id, title, comment from posts left outer join comments on posts.id = comments.post_id;
+-- select posts.id, title, comment from posts left join comments on posts.id = comments.post_id;
+
+-- 交差結合
+select posts.id, title, comment from posts cross join comments;
