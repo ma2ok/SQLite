@@ -13,7 +13,12 @@ insert into users (name, score) values ('ohashi',  null);
 
 .headers on
 .mode column
--- select id, name, score + 10 as new_score from users;
--- + - * / %
--- ||
-select id, 'Name: ' || name as name, score + 10 as new_score from users;
+
+-- select count(id), max(score), min(score), avg(score) from users;
+-- select name, length(name), upper(name), substr(name, 2, 3) from users;
+
+-- select last_insert_rowid();
+
+-- select random();
+
+select * from users order by random() limit 1;
