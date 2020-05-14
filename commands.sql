@@ -2,23 +2,21 @@ drop table if exists users;
 CREATE table users (
   id integer primary key,
   name text,
-  score integer
+  score integer,
+  team text
 );
-insert into users (name, score) values ('taguchi', 43);
-insert into users (name, score) values ('fkoji',   80);
-insert into users (name, score) values ('tashiro', 65);
-insert into users (name, score) values ('hayashi', 54);
-insert into users (name, score) values ('sato',    74);
-insert into users (name, score) values ('ohashi',  null);
+insert into users (name, score, team) values ('taguchi', 43, 'team-A');
+insert into users (name, score, team) values ('fkoji',   80, 'team-B');
+insert into users (name, score, team) values ('tashiro', 65, 'team-B');
+insert into users (name, score, team) values ('hayashi', 54, 'team-A');
+insert into users (name, score, team) values ('sato',    74, 'team-C');
 
 .headers on
 .mode column
 
--- select count(id), max(score), min(score), avg(score) from users;
--- select name, length(name), upper(name), substr(name, 2, 3) from users;
+-- select team, avg(score) from users group by team;
+-- select team, avg(score) from users group by team having avg(score) > 50;
+-- select team, avg(score) from users where score > 50 group by team;
 
--- select last_insert_rowid();
-
--- select random();
-
-select * from users order by random() limit 1;
+-- distinct
+select distinct team from users;
