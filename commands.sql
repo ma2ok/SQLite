@@ -14,9 +14,11 @@ insert into users (name, score, team) values ('sato',    74, 'team-C');
 .headers on
 .mode column
 
--- select team, avg(score) from users group by team;
--- select team, avg(score) from users group by team having avg(score) > 50;
--- select team, avg(score) from users where score > 50 group by team;
+-- update
+update users set score = 0, name = '* ' || name where score < 60;
+select * from users;
 
--- distinct
-select distinct team from users;
+-- delete
+-- delete from users;
+delete from users where score = 0;
+select * from users;
