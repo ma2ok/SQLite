@@ -14,12 +14,21 @@ insert into users (name, score, team) values ('sato',    74, 'team-C');
 .headers on
 .mode column
 
--- transaction
+-- trigger
 
-begin transaction;
-update users set score = score - 10 where name = 'fkoji';
-update users set score = score + 10 where name = 'taguchi';
--- commit;
-rollback;
+create table messages (message);
 
-select * from users;
+create trigger new_winner update of score on users when new.score > 100
+begin
+  insert into messages (message) values (
+    'name: ' || new.name ||
+    ' ' || old.score ||
+    ' -> ' || new.score
+  );
+end;
+
+update users set score = score + 30;
+select * from messages;
+
+-- .schema
+-- drop trigger new_winner;
