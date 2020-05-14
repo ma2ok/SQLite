@@ -14,11 +14,12 @@ insert into users (name, score, team) values ('sato',    74, 'team-C');
 .headers on
 .mode column
 
--- update
-update users set score = 0, name = '* ' || name where score < 60;
-select * from users;
+-- transaction
 
--- delete
--- delete from users;
-delete from users where score = 0;
+begin transaction;
+update users set score = score - 10 where name = 'fkoji';
+update users set score = score + 10 where name = 'taguchi';
+-- commit;
+rollback;
+
 select * from users;
