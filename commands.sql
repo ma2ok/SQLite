@@ -1,25 +1,24 @@
-drop table if exists users;
-CREATE table users (
+drop table if exists posts;
+CREATE table posts (
   id integer primary key,
-  name text,
-  score integer,
-  team text,
-  created datetime default (datetime('now', '+09:00:00'))
+  title text,
+  body text
 );
-insert into users (name, score, team) values ('taguchi', 43, 'team-A');
-insert into users (name, score, team) values ('fkoji',   80, 'team-B');
-insert into users (name, score, team) values ('tashiro', 65, 'team-B');
-insert into users (name, score, team) values ('hayashi', 54, 'team-A');
-insert into users (name, score, team) values ('sato',    74, 'team-C');
+insert into posts (id, title, body) values (1, 't1', 'b1');
+insert into posts (id, title, body) values (2, 't2', 'b2');
+
+drop table if exists comments;
+CREATE table comments (
+  id integer primary key,
+  post_id integer,
+  comment text
+);
+insert into comments (id, post_id, comment) values (1, 1, 'c1');
+insert into comments (id, post_id, comment) values (2, 1, 'c2');
 
 .headers on
 .mode column
 
--- date time
--- date()
--- time()
--- strftime()
--- select datetime('now', '+09:00:00');
--- select date('2015-07-17', '+3 months', 'start of month', '-1 day');
-
-select * from users;
+-- posts, comments
+select * from posts;
+select * from comments;
